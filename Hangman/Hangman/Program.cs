@@ -12,6 +12,7 @@ namespace Hangman
             //Declarations
             string pause;
             string check;
+            Hangman hang;
 
             //Intro
             Console.Write("________Hangman_______\n\n");
@@ -26,6 +27,8 @@ namespace Hangman
             if( check == "yes" )
             {
                 Console.Write("\n\nInput was yes\n\n");
+                hang = new Hangman();
+                hang.DisplayBlanks();
             }
             else if (check == "no")
             {

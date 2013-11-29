@@ -3,3 +3,8 @@ C:\Users\Jonathan Breedlove\Documents\GitHub\Hangman\Hangman\Hangman\bin\Debug\H
 C:\Users\Jonathan Breedlove\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.csprojResolveAssemblyReference.cache
 C:\Users\Jonathan Breedlove\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.exe
 C:\Users\Jonathan Breedlove\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.pdb
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.exe
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.pdb
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\bin\Debug\Hangman.exe
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\bin\Debug\Hangman.pdb
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.csprojResolveAssemblyReference.cache
