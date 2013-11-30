@@ -11,12 +11,14 @@ namespace Hangman
         char[] guessed;
         string letter;
         int body;
+        List<char> tracker;        
 
         public Hangman()
         {
+            tracker = new List<char>();
             body = 0;
             Console.Write("Please select a word to be guessed\n");
-            word = Console.ReadLine();
+            word = Console.ReadLine().ToUpper();
 
             char[] replace;
             replace = new char[word.Length];
@@ -40,14 +42,39 @@ namespace Hangman
 
         public void DisplayGuessed()
         {
-            Console.Write(guessed);
+            char[] display = guessed;
+
+            for (int i = 0; i < display.Length; i++ )
+            {
+                Console.Write(display[i]);
+                Console.Write(" ");
+            }
+
             Console.WriteLine();
         }
 
         public void GuessLetter()
         {
             Console.Write("Please enter a letter: ");
-            letter = Console.ReadLine();
+            letter = Console.ReadLine().ToUpper();
+
+            if (letter.Length != 1)
+            {
+                Console.Clear();
+                DisplayGuessed();
+                Console.Write("\n\nYou have entered invalid input\n\n");
+                GuessLetter();
+            }
+
+            if (tracker.Contains(letter[0]))
+            {
+                Console.Write("You have already guessed this letter\n\n");
+                GuessLetter();
+            }
+            else
+            {
+                tracker.Add(letter[0]);
+            }
         }
 
         public bool CheckLetter( string l )
@@ -120,28 +147,43 @@ namespace Hangman
             body++;
             if (body == 1)
             {
+                Console.Clear();
+                DisplayGuessed();
                 Console.Write("Your head was attached to the gallows\n");
             }
             else if (body == 2)
             {
+                Console.Clear();
+                DisplayGuessed();
                 Console.Write("Your chest was attached to the gallows\n");
             }
             else if (body == 3)
             {
+                Console.Clear();
+                DisplayGuessed();
                 Console.Write("Your left arm was attached to the gallows\n");
             }
             else if (body == 4)
             {
+                Console.Clear();
+                DisplayGuessed();
                 Console.Write("Your right arm was attached to the gallows\n");
             }
             else if (body == 5)
             {
+                Console.Clear();
+                DisplayGuessed();
                 Console.Write("Your left leg was attached to the gallows\n");
             }
             else if (body == 6)
             {
+                Console.Clear();
+                DisplayGuessed();
                 Console.Write("Your right leg was attached to the gallows\n");
-                Console.Write("You have died");
+                Console.Write("You have died\n");
+                Console.Write("\n\nThe word was ");
+                Console.Write(word);
+                Console.Write("\n\n");
             }
         }
 

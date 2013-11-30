@@ -11,9 +11,9 @@ namespace Hangman
         {
             //Declarations
             //string pause;
-            string check = "yes";
+            string check = "YES";
 
-            while (check == "yes")
+            while (check.ToUpper() == "YES")
             {
                 Hangman hang;
 
@@ -27,10 +27,13 @@ namespace Hangman
                 check = Console.ReadLine();
 
                 //Check user's input
-                if (check == "yes")
+                if (check.ToUpper() == "YES")
                 {
-                    Console.Write("\n\nInput was yes\n\n");
+                    Console.Write("\nInput was yes\n\n");
                     hang = new Hangman();
+
+                    Console.Clear();
+
                     hang.DisplayBlanks();
 
                     while (hang.Body < 6 && hang.CheckWord() == false)
@@ -39,6 +42,7 @@ namespace Hangman
                         if (hang.CheckLetter(hang.Letter))
                         {
                             hang.FillInBlanks(hang.FindIndices(hang.Word, hang.Letter), hang.Letter);
+                            Console.Clear();
                             hang.DisplayGuessed();
                         }
                         else
@@ -46,17 +50,24 @@ namespace Hangman
                             hang.AddBodyPart();
                         }
                     }
+
+                    if( hang.CheckWord() )
+                    {
+                        Console.Write("You have won!\n\n");
+                    }
                 }
-                else if (check == "no")
+                else if (check.ToUpper() == "NO")
                 {
                     Console.Write("\n\nInput was no\n\n");
                 }
                 else
                 {
-                    Console.Write("\n\nThat was not valid input\n\n");
+                    Console.Write("\n\nThat was not valid input\n\n");        
                 }
-                Console.Write("Would you like to play again? (yes/no)");
-                check = Console.ReadLine();
+
+                Console.Write("Would you like to play again? (yes/no)");                
+                check = Console.ReadLine().ToUpper();
+                Console.Clear();
             }
             //pause = Console.ReadLine();
         }
