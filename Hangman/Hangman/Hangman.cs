@@ -7,6 +7,7 @@ namespace Hangman
 {
     class Hangman
     {
+        bool addPart;
         string word;
         char[] guessed;
         string letter;
@@ -15,6 +16,7 @@ namespace Hangman
 
         public Hangman()
         {
+            addPart = false;
             tracker = new List<char>();
             body = 0;
             Console.Write("Please select a word to be guessed\n");
@@ -53,6 +55,44 @@ namespace Hangman
             Console.WriteLine();
         }
 
+        public void DisplayMenu()
+        {
+            string option;
+            Console.Clear();
+            if (addPart)
+            {
+                AddBodyPart();
+                addPart = false;
+            }
+            DisplayGuessed();
+            Console.Write("Would you like to Guess a:");
+            Console.Write("\nWord   (1) ");
+            Console.Write("\nLetter (2) \n");
+            option = Console.ReadLine();
+            if (option == "1" || option.ToUpper() == "WORD")
+            {
+                if (GuessWord())
+                {
+                    for (int i = 0; i < word.Length; i++)
+                    {
+                        guessed[i] = word[i];
+                    }
+                }
+                else
+                {
+                    AddBodyPart();
+                }
+            }
+            else if (option == "2" || option.ToUpper() == "LETTER")
+            {
+                GuessLetter();
+            }
+            else
+            {
+                DisplayMenu();
+            }
+        }
+
         public void GuessLetter()
         {
             Console.Write("Please enter a letter: ");
@@ -74,6 +114,34 @@ namespace Hangman
             else
             {
                 tracker.Add(letter[0]);
+            }
+
+            if (CheckLetter(letter))
+            {
+                FillInBlanks(FindIndices(word, letter), letter);
+                Console.Clear();
+                DisplayGuessed();
+            }
+            else
+            {
+                addPart = true;
+            } 
+        }
+
+        public bool GuessWord()
+        {
+            string guess;
+            Console.Clear();
+            DisplayGuessed();
+            Console.Write("Guess the word\n");
+            guess = Console.ReadLine().ToUpper();
+            if (guess == word)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -148,37 +216,31 @@ namespace Hangman
             if (body == 1)
             {
                 Console.Clear();
-                DisplayGuessed();
                 Console.Write("Your head was attached to the gallows\n");
             }
             else if (body == 2)
             {
                 Console.Clear();
-                DisplayGuessed();
                 Console.Write("Your chest was attached to the gallows\n");
             }
             else if (body == 3)
             {
                 Console.Clear();
-                DisplayGuessed();
                 Console.Write("Your left arm was attached to the gallows\n");
             }
             else if (body == 4)
             {
                 Console.Clear();
-                DisplayGuessed();
                 Console.Write("Your right arm was attached to the gallows\n");
             }
             else if (body == 5)
             {
                 Console.Clear();
-                DisplayGuessed();
                 Console.Write("Your left leg was attached to the gallows\n");
             }
             else if (body == 6)
             {
                 Console.Clear();
-                DisplayGuessed();
                 Console.Write("Your right leg was attached to the gallows\n");
                 Console.Write("You have died\n");
                 Console.Write("\n\nThe word was ");

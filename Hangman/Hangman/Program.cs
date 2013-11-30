@@ -29,7 +29,7 @@ namespace Hangman
                 //Check user's input
                 if (check.ToUpper() == "YES")
                 {
-                    Console.Write("\nInput was yes\n\n");
+                    Console.Clear();
                     hang = new Hangman();
 
                     Console.Clear();
@@ -38,21 +38,13 @@ namespace Hangman
 
                     while (hang.Body < 6 && hang.CheckWord() == false)
                     {
-                        hang.GuessLetter();
-                        if (hang.CheckLetter(hang.Letter))
-                        {
-                            hang.FillInBlanks(hang.FindIndices(hang.Word, hang.Letter), hang.Letter);
-                            Console.Clear();
-                            hang.DisplayGuessed();
-                        }
-                        else
-                        {
-                            hang.AddBodyPart();
-                        }
+                        hang.DisplayMenu();
                     }
 
                     if( hang.CheckWord() )
                     {
+                        Console.Clear();
+                        hang.DisplayGuessed();
                         Console.Write("You have won!\n\n");
                     }
                 }
