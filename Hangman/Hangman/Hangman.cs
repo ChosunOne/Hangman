@@ -8,13 +8,25 @@ namespace Hangman
     class Hangman
     {
         string word;
-        string guessed;
+        char[] guessed;
         string letter;
+        int body;
 
         public Hangman()
         {
+            body = 0;
             Console.Write("Please select a word to be guessed\n");
             word = Console.ReadLine();
+
+            char[] replace;
+            replace = new char[word.Length];
+
+            for (int j = 0; j < word.Length; j++)
+            {
+                replace[j] = '_';
+            }
+
+            guessed = replace;
         }
 
         public void DisplayBlanks()
@@ -24,6 +36,12 @@ namespace Hangman
                 Console.Write("_ ");
             }
             Console.Write("\n");
+        }
+
+        public void DisplayGuessed()
+        {
+            Console.Write(guessed);
+            Console.WriteLine();
         }
 
         public void GuessLetter()
@@ -45,6 +63,18 @@ namespace Hangman
             }
 
             return false;
+        }
+
+        public bool CheckWord()
+        {
+            foreach (var i in guessed)
+            {
+                if (i == '_')
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public List<int> FindIndices( string w, string l )
@@ -71,12 +101,10 @@ namespace Hangman
             char[] replace;
             int length = guessed.Length;
             replace = new char[length];
-            int count = 0;
 
-            foreach(var j in guessed)
+            for(int j=0; j<guessed.Length;j++)
             {
-                replace[j] = guessed[count];
-                count++;
+                replace[j] = guessed[j];
             }
 
             foreach (var i in indexList)
@@ -84,7 +112,37 @@ namespace Hangman
                 replace[i] = l[0];
             }
 
-            guessed = replace.ToString();
+            guessed = replace;
+        }
+
+        public void AddBodyPart()
+        {
+            body++;
+            if (body == 1)
+            {
+                Console.Write("Your head was attached to the gallows\n");
+            }
+            else if (body == 2)
+            {
+                Console.Write("Your chest was attached to the gallows\n");
+            }
+            else if (body == 3)
+            {
+                Console.Write("Your left arm was attached to the gallows\n");
+            }
+            else if (body == 4)
+            {
+                Console.Write("Your right arm was attached to the gallows\n");
+            }
+            else if (body == 5)
+            {
+                Console.Write("Your left leg was attached to the gallows\n");
+            }
+            else if (body == 6)
+            {
+                Console.Write("Your right leg was attached to the gallows\n");
+                Console.Write("You have died");
+            }
         }
 
         public string Word
@@ -92,6 +150,34 @@ namespace Hangman
             get
             {
                 return word;
+            }
+        }
+
+        public string Letter
+        {
+            get
+            {
+                return letter;
+            }
+        }
+
+        public char[] Guessed
+        {
+            get
+            {
+                return guessed;
+            }
+        }
+
+        public int Body
+        {
+            get
+            {
+                return body;
+            }
+            set
+            {
+                body = value;
             }
         }
 
