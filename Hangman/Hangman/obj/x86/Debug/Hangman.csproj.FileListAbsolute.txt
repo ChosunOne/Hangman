@@ -8,3 +8,7 @@ C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\D
 C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\bin\Debug\Hangman.exe
 C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\bin\Debug\Hangman.pdb
 C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.csprojResolveAssemblyReference.cache
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.csproj.GenerateResource.Cache
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.frmGameWindow.resources
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.frmHangman.resources
+C:\Users\System Administrator\Documents\GitHub\Hangman\Hangman\Hangman\obj\x86\Debug\Hangman.frmSelectWord.resources

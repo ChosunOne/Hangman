@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Hangman
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            //Declarations
-            //string pause;
+            frmHangman Hangman = new frmHangman();
+            Application.Run(Hangman);
             string check = "YES";
 
             while (check.ToUpper() == "YES")

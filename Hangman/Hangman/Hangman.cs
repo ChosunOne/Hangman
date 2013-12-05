@@ -33,6 +33,24 @@ namespace Hangman
             guessed = replace;
         }
 
+        public Hangman(string w)
+        {
+            addPart = false;
+            tracker = new List<char>();
+            body = 0;
+            word = w.ToUpper();
+
+            char[] replace;
+            replace = new char[word.Length];
+
+            for (int j = 0; j < word.Length; j++)
+            {
+                replace[j] = '_';
+            }
+
+            guessed = replace;
+        }
+
         public void DisplayBlanks()
         {
             for (int i = 0; i < word.Length; i++)
@@ -40,6 +58,21 @@ namespace Hangman
                 Console.Write("_ ");
             }
             Console.Write("\n");
+        }
+
+        public string ReturnGuessed()
+        {
+            char[] display;
+            string output;
+            display = new char[guessed.Length * 2];
+            for (int i = 0, j = 0; i < guessed.Length; i++)
+            {
+                display[j] = guessed[i];
+                display[j + 1] = ' ';
+                j += 2;
+            }
+            output = new string(display);
+            return output;
         }
 
         public void DisplayGuessed()
@@ -128,6 +161,42 @@ namespace Hangman
             } 
         }
 
+        public string GuessLetter(string l)
+        {
+            string output;
+            letter = l.ToUpper();
+            if (letter.Length != 1)
+            {
+                output = "You have entered invalid input.";
+                return output;
+                
+            }
+
+            if (tracker.Contains(letter[0]))
+            {
+                output = "You have already guessed this letter.";
+                return output;
+            }
+            else
+            {
+                tracker.Add(letter[0]);
+            }
+
+            if (CheckLetter(letter))
+            {
+                FillInBlanks(FindIndices(word, letter), letter);
+                ReturnGuessed();
+            }
+            else
+            {
+                output = HangBodyPart();
+                return output;
+            }
+
+            output = ReturnGuessed();
+            return output;
+        }
+
         public bool GuessWord()
         {
             string guess;
@@ -135,6 +204,20 @@ namespace Hangman
             DisplayGuessed();
             Console.Write("Guess the word\n");
             guess = Console.ReadLine().ToUpper();
+            if (guess == word)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool GuessWord(string w)
+        {
+            string guess;
+            guess = w.ToUpper();
             if (guess == word)
             {
                 return true;
@@ -249,6 +332,47 @@ namespace Hangman
             }
         }
 
+        public string HangBodyPart()
+        {
+            string output;
+            body++;
+            if (body == 1)
+            {
+                output = "Your head was attached to the gallows.";
+                return output;
+            }
+            else if (body == 2)
+            {
+                output = "Your chest was attached to the gallows.";
+                return output;
+            }
+            else if (body == 3)
+            {
+                output = "Your left arm was attached to the gallows.";
+                return output;
+            }
+            else if (body == 4)
+            {
+                output = "Your right arm was attached to the gallows.";
+                return output;
+            }
+            else if (body == 5)
+            {
+                output = "Your left leg was attached to the gallows.";
+                return output;
+            }
+            else if (body == 6)
+            {
+                output = "Your right leg was attached to the gallows. You have died.";
+                return output;
+            }
+            else
+            {
+                output = "An error has occurred.  Somehow body has become a value of " + Convert.ToString(body);
+                return output;
+            }
+        }
+
         public string Word
         {
             get
@@ -270,6 +394,10 @@ namespace Hangman
             get
             {
                 return guessed;
+            }
+            set
+            {
+                guessed = value;
             }
         }
 
