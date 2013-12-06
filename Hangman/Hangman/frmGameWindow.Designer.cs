@@ -52,9 +52,10 @@
             // lblLetters
             // 
             this.lblLetters.AutoSize = true;
+            this.lblLetters.Font = new System.Drawing.Font("OCR A Extended", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLetters.Location = new System.Drawing.Point(16, 30);
             this.lblLetters.Name = "lblLetters";
-            this.lblLetters.Size = new System.Drawing.Size(85, 13);
+            this.lblLetters.Size = new System.Drawing.Size(389, 35);
             this.lblLetters.TabIndex = 1;
             this.lblLetters.Text = "_ _ _ _ _ _ _ _ _";
             // 

@@ -16,7 +16,7 @@ namespace Hangman
         {
             frmHangman Hangman = new frmHangman();
             Application.Run(Hangman);
-            string check = "YES";
+            /* string check = "YES";
 
             while (check.ToUpper() == "YES")
             {
@@ -67,6 +67,7 @@ namespace Hangman
                 Console.Clear();
             }
             //pause = Console.ReadLine();
+             * */
         }
     }
 }

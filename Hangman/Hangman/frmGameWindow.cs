@@ -76,12 +76,21 @@ namespace Hangman
                     btnWord.Enabled = false;
                     txtInput.Enabled = false;
                 }
+                
             }
             else
             {
                 lblBodyStatus.Visible = false;
                 txtInput.Text = "";
                 lblLetters.Text = game.ReturnGuessed();
+                if (game.CheckWord())
+                {
+                    lblGuessed.Text = "You have won!  The word was:";
+                    txtInput.Text = "";
+                    txtInput.Enabled = false;
+                    btnWord.Enabled = false;
+                    btnLetter.Enabled = false;
+                }
             }
         }
 
