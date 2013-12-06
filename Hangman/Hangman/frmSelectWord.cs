@@ -18,10 +18,13 @@ namespace Hangman
 
         private void btnSubmitWord_Click(object sender, EventArgs e)
         {
-            frmGameWindow game = new frmGameWindow(txtWord.Text);
-            Hide();
-            game.ShowDialog();
-            Close();
+            if (txtWord.Text != "")
+            {
+                frmGameWindow game = new frmGameWindow(txtWord.Text);
+                Hide();
+                game.ShowDialog();
+                Close();
+            }
         }
     }
 }
